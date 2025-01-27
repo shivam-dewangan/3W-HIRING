@@ -11,14 +11,19 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || "http://localhost:3000", // Adjust as needed
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));  // Apply the specific CORS options
 app.use(bodyParser.json());
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => {
-    console.error("MongoDB connection error:", err);
+    console.error("MongoDB connection error:", err.message); // Log error message
     process.exit(1); // Exit the app if connection fails
   });
 
@@ -34,6 +39,7 @@ app.post("/api/users", async (req, res) => {
     await user.save();
     res.status(201).json({ message: "User added successfully", data: user });
   } catch (error) {
+    console.error("Error adding user:", error.message); // Log error message
     res.status(500).json({ message: "Server error", error });
   }
 });
@@ -44,45 +50,7 @@ app.get("/api/users", async (req, res) => {
     const users = await User.find().sort({ totalPoints: -1 });
     res.status(200).json({ data: users });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error });
-  }
-});
-
-// Fetch User by ID
-app.get("/api/users/:id", async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-    if (!user) return res.status(404).json({ message: "User not found", data: null });
-    res.status(200).json({ data: user });
-  } catch (error) {
-    res.status(500).json({ message: "Server error", error });
-  }
-});
-
-// Update User Name
-app.put("/api/users/:id", async (req, res) => {
-  try {
-    const { name } = req.body;
-    if (!name) return res.status(400).json({ message: "Name is required" });
-
-    const user = await User.findById(req.params.id);
-    if (!user) return res.status(404).json({ message: "User not found", data: null });
-
-    user.name = name;
-    await user.save();
-    res.status(200).json({ message: "User updated successfully", data: user });
-  } catch (error) {
-    res.status(500).json({ message: "Server error", error });
-  }
-});
-
-// Delete User
-app.delete("/api/users/:id", async (req, res) => {
-  try {
-    const user = await User.findByIdAndDelete(req.params.id);
-    if (!user) return res.status(404).json({ message: "User not found", data: null });
-    res.status(200).json({ message: "User deleted successfully" });
-  } catch (error) {
+    console.error("Error fetching users:", error.message); // Log error message
     res.status(500).json({ message: "Server error", error });
   }
 });
@@ -115,6 +83,7 @@ app.post("/api/claim", async (req, res) => {
       data: { points, updatedUser, historyData }
     });
   } catch (error) {
+    console.error("Error during claim points:", error.message); // Log error message
     res.status(500).json({ message: "Server error", error });
   }
 });
@@ -125,6 +94,7 @@ app.get("/api/history", async (req, res) => {
     const history = await History.find().populate("userId", "name").sort({ timestamp: -1 });
     res.status(200).json({ data: history });
   } catch (error) {
+    console.error("Error fetching claim history:", error.message); // Log error message
     res.status(500).json({ message: "Server error", error });
   }
 });
