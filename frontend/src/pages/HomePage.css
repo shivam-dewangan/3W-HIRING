@@ -1,0 +1,213 @@
+/* HomePage.css */
+
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #121212;
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+.header {
+  background-color: #1a1a1a;
+  color: #3498db;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.header h1 {
+  font-size: 3rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* Main Content */
+.main-content {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Add User Form */
+.add-user-form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.add-user-form input {
+  padding: 12px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: 1px solid #3498db;
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  width: 75%;
+  transition: border-color 0.3s ease;
+}
+
+.add-user-form input:focus {
+  outline: none;
+  border-color: #2980b9;
+}
+
+.add-user-form button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 20%;
+  transition: background-color 0.3s ease;
+}
+
+.add-user-form button:hover {
+  background-color: #2980b9;
+}
+
+/* User Selection Dropdown */
+.user-selection {
+  margin: 20px 0;
+}
+
+.user-selection select {
+  padding: 12px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: 1px solid #3498db;
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  width: 300px;
+  transition: border-color 0.3s ease;
+}
+
+.user-selection select:focus {
+  outline: none;
+  border-color: #2980b9;
+}
+
+.user-selection label {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  color: #3498db;
+  font-weight: 600;
+}
+
+/* Claim Button */
+.claim-button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.claim-button button {
+  padding: 14px 30px;
+  font-size: 1.4rem;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 220px;
+  transition: background-color 0.3s ease;
+}
+
+.claim-button button:hover {
+  background-color: #2980b9;
+}
+
+/* Leaderboard */
+.leaderboard {
+  margin-top: 40px;
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.leaderboard h2 {
+  font-size: 2rem;
+  color: #3498db;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.leaderboard table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.leaderboard th,
+.leaderboard td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 2px solid #444;
+  font-size: 1.1rem;
+}
+
+.leaderboard th {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.leaderboard tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+
+.leaderboard tr:hover {
+  background-color: #3a3a3a;
+}
+
+.leaderboard tr td {
+  color: #fff;
+}
+
+/* Claim History */
+.claim-history {
+  margin-top: 40px;
+}
+
+.claim-history h2 {
+  font-size: 2rem;
+  color: #3498db;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.claim-history ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+.claim-history li {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+.claim-history li:hover {
+  background-color: #3a3a3a;
+}
+
+/* Footer */
+.footer {
+  background-color: #1a1a1a;
+  color: #3498db;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  font-size: 1rem;
+}
