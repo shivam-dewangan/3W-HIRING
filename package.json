@@ -8,10 +8,11 @@
     "server": "cd backend && npm start",
     "client": "cd frontend && npm run dev",
     "build": "cd frontend && npm run build && npx copyfiles -u 1 frontend/dist/* backend/public/"
-  }
-  ,
+  },
   "dependencies": {
-    "concurrently": "^9.1.2",
     "copyfiles": "^2.4.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }
