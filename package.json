@@ -4,11 +4,11 @@
   "description": "Leaderboard Task",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd backend && npm start",
-    "client": "cd frontend && npm run dev",
-    "build": "cd frontend && npm run build && npx copyfiles -u 1 frontend/dist/* backend/public/"
-  },
+    "start": "npm run server & npm run client",
+    "server": "cd backend && npm install && npm start",
+    "client": "cd frontend && npm install && npm run dev"
+  }
+  ,
   "dependencies": {
     "copyfiles": "^2.4.1"
   },
